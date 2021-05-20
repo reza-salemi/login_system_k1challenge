@@ -15,6 +15,9 @@
         {
             $errors[] = "Email in not valid";
         }
+        if(!has_unique_email($users['email'])){
+            $errors[] = "email name must be unique";
+        }
 
         return $errors;
     }

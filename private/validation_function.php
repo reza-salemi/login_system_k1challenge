@@ -20,8 +20,8 @@ function has_valid_email_format($value)
 function has_unique_email($email) {
     global $db;
 
-    $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE email='" . db_scape($db,$email) . "'";
+    $sql = "SELECT * FROM user_tbl ";
+    $sql .= "WHERE email='" . db_escape($db,$email) . "'";
 
     $email_set = mysqli_query($db, $sql);
     $email_count = mysqli_num_rows($email_set);
