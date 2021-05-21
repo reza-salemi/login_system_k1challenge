@@ -18,6 +18,12 @@ function has_valid_email_format($value)
     return preg_match($email_regex, $value) === 1;
 }
 
+function has_valid_mobile_format($value)
+{
+    $mobile_regex = "/^(\+98|0098|98|0)?9\d{9}$/i";
+    return preg_match($mobile_regex, $value) === 1;
+}
+
 function has_unique_email($email)
 {
     global $db;

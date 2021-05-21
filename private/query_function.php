@@ -21,7 +21,10 @@
         if(!has_unique_user($users['username'])){
             $errors[] = "user name must be unique";
         }
-
+        if (!has_valid_mobile_format($users['number']))
+        {
+            $errors[] = "number in not valid";
+        }
         return $errors;
     }
 
