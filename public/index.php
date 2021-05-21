@@ -26,7 +26,7 @@ if(is_post_request()) {
     <form action="<?php echo url_for('index.php'); ?>" method="post">
 
       <dl>
-        <dt>Email:</dt>
+        <dt>Username:</dt>
         <dd><input type="text" name="username" value="" /></dd>
       </dl>
 

@@ -66,7 +66,7 @@ else {
 
       <dl>
         <dt>number</dt>
-        <dd><input type="text" name="number" value="" /></dd>
+        <dd><input type="text" name="number" value="" placeholder="Ex: 09174236591"/></dd>
       </dl>
 
       <div id="operations">

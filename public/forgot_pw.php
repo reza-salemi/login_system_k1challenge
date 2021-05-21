@@ -1,5 +1,15 @@
 <?php
 require_once('../private/initialize.php');
+
+if(is_post_request()) {
+
+$users = [];
+$users['username'] = $_POST['username'] ?? '';
+$users['password'] = $_POST['password'] ?? '';
+
+select_user($users);
+
+}
 ?>
 
 <?php $page_title = 'Recovery email'; ?>
@@ -8,12 +18,12 @@ require_once('../private/initialize.php');
 <div id="content">
 
 
-  <div class="users new">
+  <div class="email">
     <h1>Reset your password</h1>
     <p>An email will be send you with instructions on how to reset your password</p>
     <form method="post" action="../private/phpmailer/index.php">
       <dl>
-        <dt>User Name:</dt>
+        <dt>Email:</dt>
         <dd><input type="text" name="email" value="" /></dd>
       </dl>
 

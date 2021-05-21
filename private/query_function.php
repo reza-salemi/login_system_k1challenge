@@ -95,4 +95,78 @@
         $result = mysqli_fetch_assoc($row);
         return $result;
     }
+
+    function delete_pass($email)
+    {
+        global $db;
+
+        $sql = "DELETE FROM pwd_reset ";
+        $sql .= "WHERE pwdResetEmail='" .db_escape($db,$email). "'";
+        $result = mysqli_query($db,$sql);
+        return $result;
+
+    }
+
+    function insert_pwdReset($resetEmail,$resetSelector,$resetToken,$resetExpries)
+    {
+        global $db;
+
+        $token = hash_pass($resetToken);
+
+        $sql = "INSERT INTO pwd_reset ";
+        $sql .= "(pwdResetEmail,pwdResetSelector,";
+        $sql .= "pwdResetToken,pwdResetExpries) ";
+        $sql .= "VALUES (";
+        $sql .="'" . db_escape($db,$resetEmail). "',";
+        $sql .="'" . db_escape($db,$resetSelector). "',";
+        $sql .="'" . db_escape($db,$token). "',";
+        $sql .="'" . db_escape($db,$resetExpries). "'";
+        $sql .=")";
+        $result = mysqli_query($db,$sql);
+
+        if($result)
+        {
+            return true;
+        }
+        else{
+            mysqli_errno($db);
+            db_disconnect($db);
+            exit();
+        }
+    }
+
+    function select_pwd($selector,$expire)
+    {
+        global $db;
+
+        $sql = "SELECT * FROM pwd_reset ";
+        $sql .= "WHERE pwdResetSelector='" .db_escape($db,$selector). "' ";
+        $sql .= "AND pwdResetExpries >='" .db_escape($db,$expire). "'";
+        $row = mysqli_query($db,$sql);
+        $result = mysqli_fetch_assoc($row);
+        return $result;
+    }
+
+    function update_pass($pass,$mail)
+    {
+        global $db;
+
+        $pw = hash_pass($pass);
+
+        $sql = "UPDATE user_tbl SET ";
+        $sql .= "password='". db_escape($db,$pw) ."'";
+        $sql .= "WHERE email='".db_escape($db,$mail)."'";
+        $result = mysqli_query($db,$sql);
+
+        if($result)
+        {
+            return true;
+        }
+        else{
+            mysqli_errno($db);
+            db_disconnect($db);
+            exit();
+        }
+
+    }
 ?>
