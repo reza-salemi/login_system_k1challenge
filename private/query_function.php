@@ -16,7 +16,10 @@
             $errors[] = "Email in not valid";
         }
         if(!has_unique_email($users['email'])){
-            $errors[] = "email name must be unique";
+            $errors[] = "email must be unique";
+        }
+        if(!has_unique_user($users['username'])){
+            $errors[] = "user name must be unique";
         }
 
         return $errors;
@@ -71,10 +74,10 @@
         if (password_verify($users['password'], $result['password']))
         {
             $_SESSION['username'] = $result['username'];
-            header("location:home.php");
+            header("location:profile.php");
         }
         else{
-            header("location:home.php?login=error");
+            header("location:profile.php?login=error");
         }
 
     }

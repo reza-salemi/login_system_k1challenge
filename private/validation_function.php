@@ -17,7 +17,9 @@ function has_valid_email_format($value)
     $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
     return preg_match($email_regex, $value) === 1;
 }
-function has_unique_email($email) {
+
+function has_unique_email($email)
+{
     global $db;
 
     $sql = "SELECT * FROM user_tbl ";
@@ -27,6 +29,19 @@ function has_unique_email($email) {
     $email_count = mysqli_num_rows($email_set);
 
     return $email_count === 0;
+}
+
+function has_unique_user($users)
+{
+    global $db;
+
+    $sql = "SELECT * FROM user_tbl ";
+    $sql .= "WHERE username='" . db_escape($db,$users) . "'";
+
+    $user_set = mysqli_query($db, $sql);
+    $user_count = mysqli_num_rows($user_set);
+
+    return $user_count === 0;
 }
 
 

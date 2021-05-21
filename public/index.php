@@ -14,14 +14,14 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Create users'; ?>
+<?php $page_title = 'Login'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
 
 
   <div class="users new">
-    <h1>Create users</h1>
+    <h1>Login</h1>
 
     <form action="<?php echo url_for('index.php'); ?>" method="post">
 
