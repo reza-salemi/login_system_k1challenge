@@ -9,8 +9,8 @@ require_once('../private/initialize.php');
 
 
   <div class="users new">
-    <h1>Create users</h1>
-
+    <h1>Reset your password</h1>
+    <p>An email will be send you with instructions on how to reset your password</p>
     <form method="post" action="../private/phpmailer/index.php">
       <dl>
         <dt>User Name:</dt>

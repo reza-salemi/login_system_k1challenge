@@ -1,5 +1,5 @@
 <footer>
-    &COPY; <?php echo date('Y'); ?> Globe Bank
+    &COPY; <?php echo date('Y'); ?> Created by Mohammad Reza Salemi
 </footer>
 </body>
 </html>

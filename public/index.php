@@ -20,13 +20,13 @@ if(is_post_request()) {
 <div id="content">
 
 
-  <div class="users new">
+  <div class="Email">
     <h1>Login</h1>
 
     <form action="<?php echo url_for('index.php'); ?>" method="post">
 
       <dl>
-        <dt>User Name:</dt>
+        <dt>Email:</dt>
         <dd><input type="text" name="username" value="" /></dd>
       </dl>
 

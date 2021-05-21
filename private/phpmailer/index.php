@@ -11,6 +11,8 @@ if(is_post_request())
 {
     $email = $_POST['email'] ?? '';
     $result = select_email($email);
+
+
     if($result['email'] != $email){
         echo "your email not found";
     }
@@ -20,14 +22,14 @@ if(is_post_request())
 
     try {
         //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'fd06ce4bc613c3';                     //SMTP username
-        $mail->Password   = 'e511716e17f386';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        $mail->Port       = 2525;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+        $mail->Username   = 'fd06ce4bc613c3';                       //SMTP username
+        $mail->Password   = 'e511716e17f386';                       //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 2525;
 
         //Recipients
         $mail->setFrom('59645795ac-f05122@inbox.mailtrap.io', 'Mailer');
@@ -36,9 +38,9 @@ if(is_post_request())
 
 
         //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+        $mail->isHTML(true);                           //Set email format to HTML
+        $mail->Subject = 'reset your password';
+        $mail->Body    = 'your can reset your password with this link';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();

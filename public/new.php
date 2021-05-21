@@ -14,19 +14,14 @@ if(is_post_request()) {
 
   $result = insert_user($users);
   if($result === true) {
-
+      echo "user created";
   } else {
     $errors = $result;
   }
 
 }
 else {
-    $users = [];
-    $users['username'] = '';
-    $users['firstname'] = '';
-    $users['lastname'] = '';
-    $users['email'] = '';
-    $users['number'] = '';
+
 }
 
 ?>

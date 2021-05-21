@@ -12,7 +12,7 @@ if(!isset($page_title)) { ($page_title = 'staff area');}
 
   <body>
     <header>
-        <h1>GBI Bank</h1>
+        <h1>Login system</h1>
     </header>
 
 
